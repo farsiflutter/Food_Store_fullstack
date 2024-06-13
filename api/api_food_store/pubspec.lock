@@ -517,10 +517,10 @@ packages:
     dependency: "direct main"
     description:
       name: vania
-      sha256: "24329d9e532f0fddb6f0c355bb582310dfd2f4a25a897aef2c1ae2e56483ba17"
+      sha256: "89e6a89971d840fe3edb1547ce361ac1e3baace53e4221d11d36f43c294e8015"
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.6"
+    version: "0.2.7"
   vm_service:
     dependency: transitive
     description:
