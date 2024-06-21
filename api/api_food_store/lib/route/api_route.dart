@@ -1,4 +1,5 @@
 import 'package:api_food_store/app/http/controllers/category_controller.dart';
+import 'package:api_food_store/app/http/controllers/food_controller.dart';
 import 'package:api_food_store/app/http/controllers/user_controller.dart';
 import 'package:api_food_store/app/http/middleware/authenticate.dart';
 import 'package:vania/vania.dart';
@@ -34,6 +35,16 @@ class ApiRoute implements Route {
       },
       prefix: "category",
        middleware: [AuthenticateMiddleware()],
+    );
+
+
+    //! foods
+    Router.get("food", foodController.showAll);
+    Router.group((){
+      Router.post("{categoryId}", foodController.create);
+    },
+        middleware: [AuthenticateMiddleware()],
+        prefix: "food"
     );
   }
 }
