@@ -76,7 +76,7 @@ class FoodController extends Controller {
   }
 
   Future<Response> showSearchFood(Request request) {
-    final search = request.query("search");
+    final search = request.query("text");
     return Response.json({});
   }
 
