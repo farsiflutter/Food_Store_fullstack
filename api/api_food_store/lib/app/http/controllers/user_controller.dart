@@ -132,7 +132,6 @@ class UserController extends Controller {
     return Response.json({"message": "user Updated !"});
   }
 
-
 //! delete
   Future<Response> destroy(int id) async {
     //? hard delete
@@ -146,6 +145,14 @@ class UserController extends Controller {
         .update({"deleted_at": DateTime.now()});
 
     return Response.json({"message": "user Deleted !"});
+  }
+
+  //! refreshToken
+  Future<Response> refreshToken(Request request) async{
+    final newToken =await Auth().createTokenByRefreshToken(
+        request.header('Authorization')!,
+        expiresIn: Duration(days: 1));
+    return Response.json(newToken);
   }
 }
 

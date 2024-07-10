@@ -13,6 +13,7 @@ class ApiRoute implements Route {
     //! user
     Router.post("register", userController.register);
     Router.post("login", userController.login);
+    Router.get("refreshToken", userController.refreshToken);
 
     Router.group(
       () {
@@ -40,8 +41,16 @@ class ApiRoute implements Route {
 
     //! foods
     Router.get("food", foodController.showAll);
+    Router.get("food/{id}", foodController.show);
+    Router.get("latestFood", foodController.showLatestsFood);
+    Router.get("popularFood", foodController.showPopularFood);
+    Router.get("searchFood", foodController.showSearchFood);
+    Router.post("food/view/{id}", foodController.increaseViewFood);
+    
     Router.group((){
       Router.post("{categoryId}", foodController.create);
+      Router.post("{id}", foodController.update);
+      Router.post("{id}", foodController.destroy);
     },
         middleware: [AuthenticateMiddleware()],
         prefix: "food"
